@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+}
+
+body {
+    background-color: #E0E1DD;
+}
+
+.homePage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+}
+
+.homeInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+h1 {
+    font-size: 5em;
+    font-family: Garamond, serif;
+    color: #0D1B2A;
+}
+
+.subtitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h3 {
+    font-size: 3em;
+    font-family: Garamond, serif;
+    color: #1B263B;
+}
+
+.noBottomSpace {
+    border-bottom: 0;
+    margin-bottom: 0;
+}
+
+.noTopSpace {
+    border-top: 0;
+    margin-top: 0;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 25%;
+    row-gap: 5em;
+    width: 75%;
+}
+
+.button {
+    line-height: 2.5;
+    padding: 0 10px;
+    width: 7.5em;
+    font-size: 2rem;
+    font-family: "Lucida Console", monospace;
+    border: #E0E1DD;
+    border-radius: 10px;
+    background-color: #778DA9;
+    background-image: linear-gradient(
+        to top left,
+        rgb(0 0 0 / 20%),
+        rgb(0 0 0 / 20%) 30%,
+        rgb(0 0 0 / 0%));
+    box-shadow:
+        inset 2px 2px 3px rgb(255 255 255 / 60%),
+        inset -2px -2px 3px rgb(0 0 0 / 60%);
+
+}
+
+.button:hover {
+    background-color: #A8C6ED;
+}
+
+.button:active {
+    box-shadow:
+        inset -2px -2px 3px rgb(255 255 255 / 60%),
+        inset 2px 2px 3px rgb(0 0 0 / 60%);
+}
+
+.icons {
+    display: flex;
+    margin-top: 75px;
+    width: 40%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10%;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.homePicture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.headshot {
+    width: 85%;
+    height: 95%;
+    border-radius: 5px;
+}

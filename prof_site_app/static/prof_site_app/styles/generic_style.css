@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+    color: #071633;
+    font-family: helvetica;
+}
+
+img {
+    border: solid #3669ce 1px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgba(54, 105, 206, .5);
+}
+
+.preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: #E0E1DD;
+}

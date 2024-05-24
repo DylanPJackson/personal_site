@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'prof_site_app/styles/generic_style.css' %}" />
+    {% if error_message %}
+        <title>Not Found!</title>
+    {% else %}
+        <title>Dylan's {{ page_name }}</title>
+    {% endif %}
+</head>
+<body>
+    {% if error_message %}
+        <h1>{{ error_message }}</h1>
+    {% else %}
+        <h1>{{ page_name }} - Coming Soon!</h1>
+    {% endif %}
+    <div>
+        <div class="preview">
+            {% if error_message %}
+                <a href="{% url 'prof_site_app:home' %}"><img src="{% static 'prof_site_app/images/home.jpg' %}" alt="whoops" /></a>
+            {% else %}
+                <img src="{% static image_link %}" alt="{{ page_name }}" />
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

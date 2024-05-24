@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'prof_site_app/styles/home.css' %}" />
+    <title>Dylan P. Jackson's Website</title>
+</head>
+<body>
+{% if home_page_info %}
+    <div class ="homePage">
+        <div class="homeInfo">
+            <h1 class="noBottomSpace">{{ home_page_info.headline }}</h1>
+            <div class="subtitle">
+                <h3 class="noBottomSpace">{{ home_page_info.subtitle_1 }}</h3>
+                <h3 class="noTopSpace">{{ home_page_info.subtitle_2 }}</h3>
+            </div>
+            <div class="buttons">
+                {% for button in home_page_info.button_set.all %}
+                    <a href="{% url 'prof_site_app:placeholder' button.button_text %}" ><input type="button" value="{{ button.button_text }}" class="button"\></a>
+                {% endfor %}
+            </div>
+            <div class="icons">
+                {% for icon in home_page_info.icon_set.all %}
+                    <a href="{{ icon.icon_link }}" target="_blank" ><img src="{% static icon.icon_img_path %}" alt="{{ icon.icon_name }}" class="icon"/></a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="homePicture">
+            <img src="{% static home_page_info.picture_path %}" alt="Dylan's Professional Picture" class="headshot">
+        </div>
+    </div>
+{% endif %}
+</body>
+</html>
