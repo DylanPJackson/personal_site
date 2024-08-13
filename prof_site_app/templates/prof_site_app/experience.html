@@ -1,0 +1,26 @@
+{% extends "prof_site_app/base.html" %}
+{% load static %}
+
+{% block style_page %}
+<link rel="stylesheet" href="{% static 'prof_site_app/styles/experience_styles.css' %}" />
+{% endblock style_page %}
+{% block title %}Dylan's Experience{% endblock title %}
+
+{% block content %}
+{% if companies %}
+    <div id="companies">
+    {% for company in companies %}
+        <div class="company">
+            <img src="{% static company.logo_picture_path %}" alt="{{ company.name }}" class="company_logo"/>
+            {% for experience in company.experience_set.all %}
+                <section class="text_info">
+                    <h1 class="title">{{ experience.title }}</h1>
+                    <p class="dates">{{ experience.start_date }} - {{ experience.end_date }}</p>
+                    <p class="description">{{ experience.description }}</p>
+                </section>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}

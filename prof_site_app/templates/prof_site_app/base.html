@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'prof_site_app/styles/base_style.css' %}" />
+    {% block style_page %}{% endblock style_page %}
+    <title>{% block title %}Dylan's Website{% endblock title %}</title>
+</head>
+<body>
+{% if nav_bar %}
+    <nav id="navBar">
+        <ul id="navList">
+            {% for section in nav_bar.navsection_set.all %}
+                {% if section.section_label == "home" %}
+                    <a href="{% url 'prof_site_app:home' %}"><li class="navSection">{{ section.section_text }}</li></a>
+                {% else %}
+                    <a href="{% url 'prof_site_app:placeholder' section.section_text %}"><li class="navSection">{{ section.section_text }}</li></a>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+{% else %}
+    <h1>No Nav Bar! :(</h1>
+{% endif %}
+{% block content %}
+<h1>Fresh content for sale >.<</h1>
+{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+ul a {
+    text-decoration: none;
+}
+
+ul a:visited {
+    color: black;
+}
+
+#navBar {
+    border-bottom: 2px solid black;
+}
+
+#navList {
+    display: grid;
+    grid-template-columns: 50% 12.5% 12.5% 12.5% 12.5%;
+    justify-items: center;
+}
+
+.navSection {
+    font-size: 1.75em;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #E0E1DD;
+}

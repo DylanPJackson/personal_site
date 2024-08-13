@@ -1,0 +1,59 @@
+:root {
+    --company-font: "Open Sans";
+}
+
+#companies {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1%;
+}
+
+.company {
+    margin: auto;
+    border: 3px solid black;
+    width: 80%;
+    margin-top: 30px;
+    border-radius: 35px;
+    display: grid;
+    background-color: #8657E466;
+}
+
+.company_logo {
+    max-width: 100%;
+    width: 3.75vw;
+    height: 6.85vh;
+    position: relative;
+    left: 94%;
+    top: 10.5%;
+    grid-row: 1;
+    grid-column: 1 / 2;
+    row-gap: 0;
+}
+
+.text_info:first-of-type {
+    grid-row: 1;
+    grid-column: 1 / 2;
+}
+
+.title {
+    padding-left: 1%;
+    margin-bottom: .25%;
+    font-size: 125%;
+    font-family: var(--company-font);
+}
+
+.dates {
+    padding-left: 3%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 90%;
+    font-family: var(--company-font);
+}
+
+.description {
+    padding-left: 1%;
+    margin-top: .75%;
+    font-size: 100%;
+    font-family: var(--company-font);
+    max-width: 92%;
+}
