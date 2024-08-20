@@ -69,3 +69,23 @@ class Experience(models.Model):
 
     def __str__(self):
         return "{}".format(self.title)
+
+
+class Passion(models.Model):
+    background_picture_path = models.CharField(max_length=200)
+    headline = models.CharField(max_length=150)
+    label = models.CharField(max_length=50)
+    description = models.CharField(max_length=300)
+
+    def __str__(self):
+        return f"{self.label}"
+
+
+class Project(models.Model):
+    thumbnail_picture_path = models.CharField(max_length=200)
+    title = models.CharField(max_length=50)
+    label = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"{self.label}"
