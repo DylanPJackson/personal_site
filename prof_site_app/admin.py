@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import HomePage, Button, Icon, NavBar, NavSection, Company, Experience, Passion, Project
+from .models import *
 
 
 class ButtonInline(admin.TabularInline):
@@ -45,23 +45,25 @@ class CompanyAdmin(admin.ModelAdmin):
     inlines = [ExperienceInLine]
 
 
-class PassionAdmin(admin.ModelAdmin):
-    fieldsets = [
-        (None, {"fields": ["background_picture_path"]}),
-        (None, {"fields": ["headline"]}),
-        (None, {"fields": ["label"]}),
-        (None, {"fields": ["description"]}),
-    ]
+class PursuitInLine(admin.TabularInline):
+    model = Pursuit
+    extra = 0
 
 
-class ProjectAdmin(admin.ModelAdmin):
-    fieldsets = [
-        (None, {"fields": ["thumbnail_picture_path"]}),
-        (None, {"fields": ["title"]}),
-        (None, {"fields": ["label"]}),
-        (None, {"fields": ["description"]}),
-    ]
+class PursuitTypeAdmin(admin.ModelAdmin):
+    inlines = [PursuitInLine]
 
+
+class BlogPostInLine(admin.TabularInline):
+    model = BlogPost
+    extra = 0
+
+class LinkInLine(admin.TabularInline):
+    model = Link
+    extra = 0
+
+class PursuitAdmin(admin.ModelAdmin):
+    inlines = [BlogPostInLine, LinkInLine]
 
 admin.site.register(HomePage, HomePageAdmin)
 admin.site.register(Button)
@@ -70,5 +72,7 @@ admin.site.register(NavBar, NavBarAdmin)
 admin.site.register(NavSection)
 admin.site.register(Company, CompanyAdmin)
 admin.site.register(Experience)
-admin.site.register(Passion, PassionAdmin)
-admin.site.register(Project, ProjectAdmin)
+admin.site.register(Pursuit, PursuitAdmin)
+admin.site.register(PursuitType, PursuitTypeAdmin)
+admin.site.register(BlogPost)
+admin.site.register(Link)
