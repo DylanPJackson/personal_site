@@ -106,7 +106,7 @@ class Pursuit(models.Model):
 
 
 class BlogPost(models.Model):
-    pursuit = models.ForeignKey(Pursuit, on_delete=models.SET_DEFAULT, default=Pursuit.get_default_pk(), blank=True, null=True)
+    pursuit = models.ForeignKey(Pursuit, on_delete=models.SET_DEFAULT, default=Pursuit.get_default_pk)
     title = models.CharField(max_length=50)
     date = models.DateField()
     preview = models.CharField(max_length=200)
@@ -117,7 +117,7 @@ class BlogPost(models.Model):
 
 
 class Link(models.Model):
-    pursuit = models.ForeignKey(Pursuit, on_delete=models.CASCADE, blank=True, null=True)
+    pursuit = models.ForeignKey(Pursuit, on_delete=models.CASCADE, default=Pursuit.get_default_pk)
     text = models.CharField(max_length=30)
     link = models.CharField(max_length=100)
 
