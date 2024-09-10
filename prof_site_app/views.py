@@ -20,6 +20,13 @@ def experience(request):
     }
     return render(request, "prof_site_app/experience.html", context)
 
+def blog_list(request):
+    nav_bar = NavBar.objects.get(pk=1)
+    context = {
+        "nav_bar": nav_bar
+    }
+    return render(request, "prof_site_app/blog_list.html", context)
+
 
 def placeholder(request, page_name: str):
     page_name = page_name.capitalize()
