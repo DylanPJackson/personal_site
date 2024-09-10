@@ -1,0 +1,14 @@
+#blog_search_page {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 2em;
+    column-gap: 4em;
+}
+
+#filter_box {
+    border: 2px solid blue;
+}
+
+#blog_list {
+    border: 2px solid green;
+}

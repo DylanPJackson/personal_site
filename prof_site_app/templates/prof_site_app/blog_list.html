@@ -1,43 +1,53 @@
 {% extends "prof_site_app/base.html" %}
 {% load static %}
 
+{% block style_page %}
+<link rel="stylesheet" href="{% static 'prof_site_app/styles/blog_list_styles.css' %}" />
+{% endblock style_page %}
 {% block title %}Dylan's Blog{% endblock title %}
 
 {% block content %}
 <main id="blog_search_page">
-    <search id="filter_box">
-        <label class="filter_label">Filter by Passion :
-            <select name="passion" class="pursuit_dropdown">
-                <option value="" class="pursuit_option">----</option>
-                <option value="snowboarding" class="pursuit_option">Snowboarding</option>
-                <option value="piano" class="pursuit_option">Piano</option>
-                <option value="running" class="pursuit_option">Running</option>
-            </select>
-        </label>
-        <label class="filter_label">Filter by Project :
-            <select name="project" class="pursuit_dropdown">
-                <option value="" class="pursuit_option">----</option>
-                <option value="cs_profiles" class="pursuit_option">CS Profiles</option>
-                <option value="personal_website" class="pursuit_option">Personal Website</option>
-                <option value="lil_lexie" class="pursuit_option">Lil Lexie</option>
-            </select>
-        </label>
-    </search>
+    <form action="" method="get" id="filter_box">
+        {% if pursuit_types %}
+            <label class="filter_label">Filter by Pursuit Type :
+                <select name="pursuit_type" class="filter_dropdown">
+                    <option value="" class="pursuit_type_option">----</option>
+                    {% for pursuit_type in pursuit_types %}
+                        <option value="{{ pursuit_type.type }}" class="pursuit_type_option">{{ pursuit_type.type }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        {% else %}
+            <p>No Pursuit Types available :(</p>
+        {% endif %}
+        {% if pursuits %}
+            <label class="filter_label">Filter by Pursuit :
+                <select name="pursuit" class="filter_dropdown">
+                    <option value="" class="pursuit_option">----</option>
+                    {% for pursuit in pursuits%}
+                        <option value="{{ pursuit.internal_label }}" class="pursuit_option">{{ pursuit.internal_label }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        {% else %}
+            <p>No Pursuits available :(</p>
+        {% endif %}
+        <input type="submit" value="Filter Blog Posts"/>
+    </form>
     <div id="blog_list">
-        <div class="blog_list_preview">
-            <h2 class="blog_title">Design a Website : Django Style (this one actually)</h2>
-            <p class="blog_date">May 17th, 2024</p>
-            <p class="blog_tag">Tags : Project - Personal Site</p>
-            <p class="blog_preview">This is just filler text for now because the blog post doesn't actually exist but I
-            just want to demonstrate that I will actually make a post about this!</p>
-        </div>
-        <div class="blog_list_preview">
-            <h2 class="blog_title">CS Profiles : Design Decisions, Scope, Plan!</h2>
-            <p class="blog_date">April 12th, 2024</p>
-            <p class="blog_tag">Tags : Project - CS Profiles</p>
-            <p class="blog_preview">We are moving forward into development! I spent time researching UI Frameworks,
-            Application Server / Web Frameworks, Hosting Services, Databases, Web Servers, and all their integrations.</p>
-        </div>
+        {% if blog_posts %}
+            {% for blog_post in blog_posts %}
+                <div class="blog_list_preview">
+                    <h2 class="blog_title">{{ blog_post.title }}</h2>
+                    <p class="blog_date">{{ blog_post.date }}</p>
+                    <p class="blog_tag">Tags : {{ blog_post.pursuit.pursuit_type.type }} - {{ blog_post.pursuit.internal_label }}</p>
+                    <p class="blog_preview">{{ blog_post.preview }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No Blog Posts :(</p>
+        {% endif %}
     </div>
 </main>
 {% endblock content %}
